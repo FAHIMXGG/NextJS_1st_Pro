@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <div>
       <div>
-        All right reserved
+        All right reserved X
       </div>
     </div>
   )
