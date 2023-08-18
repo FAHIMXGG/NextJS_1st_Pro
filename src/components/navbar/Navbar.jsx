@@ -38,13 +38,15 @@ const links = [
 
 const Navbar = () => {
   return (
-    <div>
-      <Link href="/">NEXT</Link>
+    <div className='flex justify-between'>
       <div>
+      <Link href="/">NEXT</Link>
+      </div>
+      <div className='flex gap-3'>
         {links.map(link =>(
             <Link key={link.id} href={link.url}>{link.title}</Link>
         ))}
-        <button className='bg-slate-300 text-black px-2 rounded-lg' onClick={(()=>{console.log("logged Out")})}>Logout</button>
+        <button className='bg-green-300 text-black px-2 rounded-lg' onClick={(()=>{console.log("logged Out")})}>Logout</button>
       </div>
     </div>
   )
