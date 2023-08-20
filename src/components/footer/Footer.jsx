@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import React from 'react'
 
 const Footer = () => {
@@ -5,6 +6,9 @@ const Footer = () => {
     <div>
       <div>
         All right reserved X
+      </div>
+      <div>
+        <Image src="/1.jpg" width={150} height={150}></Image>
       </div>
     </div>
   )
