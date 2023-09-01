@@ -18,8 +18,12 @@ export default function RootLayout({ children }) {
         <div className='max-w-screen-2xl mx-auto mt-5'>
           <Navbar></Navbar>
 
-          {children}
-          <Footer></Footer>
+          <div className='flex flex-col min-h-screen justify-between'>
+            <div className=''>
+              {children}
+            </div>
+            <Footer></Footer>
+          </div>
         </div>
       </body>
     </html>

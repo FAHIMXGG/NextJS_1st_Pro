@@ -3,7 +3,7 @@ import React from 'react'
 
 const Footer = () => {
   return (
-    <div className='flex justify-between'>
+    <div className='flex justify-between '>
       <div>
         All right reserved X
       </div>
