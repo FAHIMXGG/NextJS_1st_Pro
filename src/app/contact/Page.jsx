@@ -7,7 +7,7 @@ const Contact = () => {
             
             <div className='mt-16'>
                 <div>
-                    {/* <Image></Image> */}
+                    {/* <Image></Image> */}///
                 </div>
                 <div>
                     <form action="" className='flex flex-col gap-7'>
