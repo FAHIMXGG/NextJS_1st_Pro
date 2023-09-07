@@ -15,7 +15,7 @@ export default function Home() {
             </div>
         </div>
         <div className='w-5/12'>
-          <Image src={Hero} className='flex'></Image>
+          <Image src={Hero} className='flex img'></Image>
         </div>
       </div>
 
