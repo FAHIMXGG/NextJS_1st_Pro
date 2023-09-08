@@ -12,7 +12,7 @@
     from{
     transform: translateY(-15px)
     }
-    to {
+    /* to {
         transform: translateY(0px) scale(1.03);
-    }
+    } */
 }
