@@ -16,3 +16,7 @@
         transform: translateY(0px) scale(1.03);
     } */
 }
+
+.rev:nth-child(2n){
+    flex-direction: row-reverse;
+}
