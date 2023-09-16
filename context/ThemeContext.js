@@ -4,14 +4,14 @@ import { createContext, useState } from "react"
 
 export const ThemeContext = createContext()
 export const ThemeProvider = ({ children }) => {
-    const [mode, setMode] = useState("black")
+    const [mode, setMode] = useState("synthwave")
 
     const toggle = () => {
-        setMode((prev) => (prev === "black" ? "cupcake" : "black"))
+        setMode((prev) => (prev === "synthwave" ? "cupcake" : "synthwave"))
     }
 
     return(<ThemeContext.Provider value={{ toggle, mode }}>
-        <div data-theme={`${mode}`}>
+        <div className="theme" data-theme={`${mode}`}>
             {children}
         </div>
     </ThemeContext.Provider>)

@@ -35,3 +35,7 @@ body {
   background-color: black;
   color: white
 } */
+
+.theme{
+  transition: 1s all;
+}
