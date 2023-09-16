@@ -2,6 +2,7 @@ import Navbar from '@/components/navbar/Navbar'
 import './globals.css'
 import { Inter } from 'next/font/google'
 import Footer from '@/components/footer/Footer'
+import { ThemeProvider } from '../../context/ThemeContext'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -15,16 +16,18 @@ export default function RootLayout({ children }) {
     <html lang="en">
 
       <body className={inter.className}>
-        <div className='max-w-screen-2xl mx-auto mt-5'>
-          <Navbar></Navbar>
+        <ThemeProvider>
+          <div className='max-w-screen-2xl mx-auto pt-5'>
+            <Navbar></Navbar>
 
-          <div className='flex flex-col min-h-screen justify-between'>
-            <div className=''>
-              {children}
+            <div className='flex flex-col min-h-screen justify-between'>
+              <div className=''>
+                {children}
+              </div>
+              <Footer></Footer>
             </div>
-            <Footer></Footer>
           </div>
-        </div>
+        </ThemeProvider>
       </body>
     </html>
   )
