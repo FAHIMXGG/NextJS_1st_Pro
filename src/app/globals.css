@@ -37,5 +37,5 @@ body {
 } */
 
 .theme{
-  transition: 1s all;
+  transition: 1s all ease;
 }

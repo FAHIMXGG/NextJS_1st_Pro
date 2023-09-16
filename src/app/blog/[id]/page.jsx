@@ -1,13 +1,24 @@
 import Image from 'next/image'
 import React from 'react'
+import { notFound } from "next/navigation"
 
-const BlogPost = () => {
+async function getData(id) {
+  const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`, { cache: 'no-store' })
+
+  if (!res.ok) {
+    return notFound()
+  }
+  return res.json()
+}
+
+const BlogPost = async ({params}) => {
+  const data = await getData(params.id)
   return (
     <div>
       <div className='mt-10 flex justify-between items-center rev gap-20'>
         <div className='flex flex-col gap-5 flex-1'>
-          <h1 className='text-2xl font-bold'>Test</h1>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit quod reprehenderit quisquam dignissimos harum nobis debitis suscipit est laboriosam facilis eveniet voluptatibus, sapiente soluta maxime vero ut ducimus? Ullam, cumque!
+          <h1 className='text-2xl font-bold'>{data.title}</h1>
+          <p>{data.body}
           </p>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur, nisi saepe delectus dignissimos porro numquam ratione sed quaerat sint. Qui ipsum ab officia eum modi atque natus deserunt dolorem assumenda veritatis, est iusto non pariatur facilis officiis. Veritatis corrupti impedit nihil iusto perferendis! Optio quasi dolore repellat ab quia illo?
