@@ -9,3 +9,5 @@ const connect = async () => {
         throw new Error("Connection failed!")
       }
 } 
+
+export default connect
