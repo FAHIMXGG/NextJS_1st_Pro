@@ -2,6 +2,11 @@ import React from 'react';
 import contact from '../../../public/contact.png'
 import Image from 'next/image';
 
+export const metadata = {
+    title: 'Contact',
+    description: 'Hoga bois',
+  }
+
 const Contact = () => {
     return (
         <div>
