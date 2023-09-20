@@ -19,7 +19,7 @@ const Blog = async () => {
         <div>
             {
                 data.map((item) => (
-                    <Link href={item._id} key={item.id}>
+                    <Link href={`/blog/${item._id}`} key={item.id}>
                         <div className='mt-10 flex justify-between items-center gap-20'>
                             <div className='flex relative '>
                                 <Image
