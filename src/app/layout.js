@@ -4,6 +4,8 @@ import { Inter } from 'next/font/google'
 import Footer from '@/components/footer/Footer'
 import { ThemeProvider } from '@/context/ThemeContext'
 
+import AuthProvider from '@/components/AuthProvider/AuthProvider'
+
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
@@ -17,16 +19,18 @@ export default function RootLayout({ children }) {
 
       <body className={inter.className}>
         <ThemeProvider>
-          <div className='max-w-screen-2xl mx-auto pt-5'>
-            <Navbar></Navbar>
+          <AuthProvider>
+            <div className='max-w-screen-2xl mx-auto pt-5'>
+              <Navbar></Navbar>
 
-            <div className='flex flex-col min-h-screen justify-between'>
-              <div className=''>
-                {children}
+              <div className='flex flex-col min-h-screen justify-between'>
+                <div className=''>
+                  {children}
+                </div>
+                <Footer></Footer>
               </div>
-              <Footer></Footer>
             </div>
-          </div>
+          </AuthProvider>
         </ThemeProvider>
       </body>
     </html>
