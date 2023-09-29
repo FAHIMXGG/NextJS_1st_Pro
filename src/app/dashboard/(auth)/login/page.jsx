@@ -3,9 +3,30 @@ import { signIn } from 'next-auth/react'
 import React from 'react'
 
 const Login = () => {
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    const email = e.target[0].value;
+    const password = e.target[1].value;
+    // const gg = ({email, password, name})
+    // console.log(gg)
+
+    signIn("credentials", { email, password })
+
+
+  }
+
   return (
-    <div>
-      <button onClick={()=>signIn("google")}>Login with Google</button>
+    <div className='md:mt-[300px]'>
+      <div className='flex justify-center '>
+        <form onSubmit={handleSubmit} className='flex flex-col gap-5 w-[400px] text-green-400'>
+          <input type="email" placeholder='email' className='p-[10px] bg-transparent rounded-md border-[1px] border-gray-600 font-semibold ' required />
+          <input type="password" placeholder='password' className='p-[10px] bg-transparent rounded-md border-[1px] border-gray-600 font-semibold ' required />
+          <button className='btn'>Login</button>
+        </form>
+
+      </div>
+      <center><button onClick={() => signIn("google")}>Login with Google</button></center>
     </div>
   )
 }
