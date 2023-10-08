@@ -83,13 +83,13 @@ const Dashboard = () => {
                     title, desc, img, content, username: session.data.user.name,
                 })
             })
-            e.target.reset();
-            mutate()
             Swal.fire(
                 'Done!',
                 'Post uploaded!',
                 'success'
-              )
+            )
+            e.target.reset();
+            mutate()
 
         } catch (err) {
             console.log(err)
@@ -103,7 +103,7 @@ const Dashboard = () => {
                 {/* //post */}
                 <div className='w-1/2'>
                     {isLoading ? "loading" :
-                        data?.map((post) => (
+                        [...data].reverse().map((post) => (
                             <div key={post._id} className='flex items-center gap-10'>
                                 <div>
                                     <Image src={post.img} width={200} height={150} alt="" ></Image>
