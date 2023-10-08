@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from 'react';
 import useSWR from 'swr'
+import Swal from 'sweetalert2'
 
 const Dashboard = () => {
     // const [data, setData] = useState([])
@@ -33,7 +34,7 @@ const Dashboard = () => {
     const router = useRouter()
 
     const fetcher = (...args) => fetch(...args).then(res => res.json())
-    const { data, error, isLoading } = useSWR(`/api/posts?username=${session?.data?.user.name}`, fetcher)
+    const { data, mutate, error, isLoading } = useSWR(`/api/posts?username=${session?.data?.user.name}`, fetcher)
 
     console.log(data)
 
@@ -46,6 +47,29 @@ const Dashboard = () => {
     }
 
     const handleSubmit = async (e) => {
+
+        let timerInterval
+        Swal.fire({
+            title: 'Please Wait',
+            timer: 20000,
+            timerProgressBar: true,
+            didOpen: () => {
+                Swal.showLoading()
+                const b = Swal.getHtmlContainer().querySelector('b')
+                timerInterval = setInterval(() => {
+                    
+                }, 100)
+            },
+            willClose: () => {
+                clearInterval(timerInterval)
+            }
+        }).then((result) => {
+            /* Read more about handling dismissals below */
+            if (result.dismiss === Swal.DismissReason.timer) {
+                console.log('I was closed by the timer')
+            }
+        })
+
         e.preventDefault()
         const title = e.target[0].value;
         const desc = e.target[1].value;
@@ -59,6 +83,14 @@ const Dashboard = () => {
                     title, desc, img, content, username: session.data.user.name,
                 })
             })
+            e.target.reset();
+            mutate()
+            Swal.fire(
+                'Done!',
+                'Post uploaded!',
+                'success'
+              )
+
         } catch (err) {
             console.log(err)
         }
